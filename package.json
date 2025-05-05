@@ -1,6 +1,6 @@
 {
   "name": "@lovesworking/watermelondb-expo-plugin-sdk-52-plus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "build/withWatermelon.js",
   "types": "build/withWatermelon.d.ts",
   "license": "MIT",
