@@ -4,8 +4,11 @@
   "main": "build/withWatermelon.js",
   "types": "build/withWatermelon.d.ts",
   "license": "MIT",
-  "git": "https://github.com/LovesWorking/watermelondb-expo-plugin-sdk-52-plus.git",
   "homepage": "https://github.com/LovesWorking/watermelondb-expo-plugin-sdk-52-plus#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LovesWorking/watermelondb-expo-plugin-sdk-52-plus.git"
+  },
   "bugs": {
     "url": "https://github.com/LovesWorking/watermelondb-expo-plugin-sdk-52-plus/issues"
   },
@@ -31,18 +34,9 @@
     "test": "expo-module test",
     "prepare": "expo-module prepare",
     "prepublishOnly": "expo-module prepublishOnly",
-    "expo-module": "expo-module",
-    "bump:beta": "npm version prerelease --preid=beta",
-    "bump:release": "npm version patch"
+    "expo-module": "expo-module"
   },
   "description": "Config plugin to auto configure `@nozbe/watermelondb` for Expo SDK 52+",
-  "directories": {
-    "example": "example"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LovesWorking/watermelondb-expo-plugin-sdk-52-plus.git"
-  },
   "author": "LovesWorking",
-  "packageManager": "npm@10.2.4"
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
