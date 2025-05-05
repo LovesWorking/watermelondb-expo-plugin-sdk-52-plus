@@ -76,7 +76,7 @@ This will add:
 
 ## About
 
-This is a fork of the original [@morrowdigital/watermelondb-expo-plugin](https://github.com/morrowdigital/watermelondb-expo-plugin) updated and maintained for Expo SDK 52 and above.
+This is a fork of the original [@morrowdigital/watermelondb-expo-plugin](https://github.com/morrowdigital/watermelondb-expo-plugin) updated and maintained for Expo SDK 52 and above. Special thanks to [@Duell10111](https://github.com/Duell10111) for creating the fix for sdk 52!
 
 ## Contributing
 
