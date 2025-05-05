@@ -31,7 +31,6 @@ In your app.json `plugins` array:
       "expo-build-properties",
       {
         "android": {
-          "kotlinVersion": "1.6.10",
           "packagingOptions": {
             "pickFirst": ["**/libc++_shared.so"]
           }
@@ -45,7 +44,7 @@ In your app.json `plugins` array:
 ## JSI support for Android
 
 This plugin installs automatically JSI support for Android builds, as per [WatermelonDB for Android instructions](https://watermelondb.dev/docs/Installation#android-react-native).
-If you wish to disable JSI support during build you may add the option in config plugin:
+If you wish to disable JSI support you during build you may add the option in config plugin:
 
 ```json
 ["@lovesworking/watermelondb-expo-plugin-sdk-52-plus", { "disableJsi": true }]
