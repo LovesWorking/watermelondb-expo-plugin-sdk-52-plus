@@ -1,14 +1,16 @@
-# watermelon-db-plugin 🍉
+# watermelondb-expo-plugin-sdk-52-plus 🍉
 
-Config plugin to auto configure `@nozbe/watermelondb`
+Config plugin to auto configure `@nozbe/watermelondb` for Expo SDK 52 and above.
 
 ## Install
 
-> Tested against Expo SDK 52
+> Tested against Expo SDK 52+
 
-```
-yarn add @morrowdigital/watermelondb-expo-plugin
+```bash
+npm install @lovesworking/watermelondb-expo-plugin-sdk-52-plus
 
+# or using yarn
+yarn add @lovesworking/watermelondb-expo-plugin-sdk-52-plus
 ```
 
 > Please make sure you also install **[expo-build-properties](https://docs.expo.dev/versions/latest/sdk/build-properties/)**
@@ -24,7 +26,7 @@ In your app.json `plugins` array:
 ```json
 {
   "plugins": [
-    ["@morrowdigital/watermelondb-expo-plugin"],
+    ["@lovesworking/watermelondb-expo-plugin-sdk-52-plus"],
     [
       "expo-build-properties",
       {
@@ -46,7 +48,7 @@ This plugin installs automatically JSI support for Android builds, as per [Water
 If you wish to disable JSI support during build you may add the option in config plugin:
 
 ```json
-["@morrowdigital/watermelondb-expo-plugin", { "disableJsi": true }]
+["@lovesworking/watermelondb-expo-plugin-sdk-52-plus", { "disableJsi": true }]
 ```
 
 ## Build errors with M1 architectures for simulators
@@ -57,8 +59,25 @@ There have been errors building with M1 architectures for simulators on iOS, wit
 No such module 'ExpoModulesCore'
 ```
 
-See these discussions:
+If you wish to add the excluded architectures configuration, you can add it with option:
 
-- [https://github.com/morrowdigital/watermelondb-expo-plugin/issues/20](https://github.com/morrowdigital/watermelondb-expo-plugin/issues/20)
-- [https://github.com/morrowdigital/watermelondb-expo-plugin/issues/34](https://github.com/morrowdigital/watermelondb-expo-plugin/issues/34)
-- [https://github.com/facebook/react-native/issues/32704#issuecomment-1174458011](https://github.com/facebook/react-native/issues/32704#issuecomment-1174458011)
+```json
+[
+  "@lovesworking/watermelondb-expo-plugin-sdk-52-plus",
+  { "excludeSimArch": true }
+]
+```
+
+This will add:
+
+```
+"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64"
+```
+
+## About
+
+This is a fork of the original [@morrowdigital/watermelondb-expo-plugin](https://github.com/morrowdigital/watermelondb-expo-plugin) updated and maintained for Expo SDK 52 and above.
+
+## Contributing
+
+See [MAINTAINERS.md](./MAINTAINERS.md) for information about making contributions and releasing new versions.
