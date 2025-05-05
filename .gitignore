@@ -85,3 +85,7 @@ android/
 !.yarn/versions
 
 .npmrc
+
+# build files & .tgz
+build/
+*.tgz
