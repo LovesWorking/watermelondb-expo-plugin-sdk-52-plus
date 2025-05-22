@@ -1,6 +1,6 @@
 # watermelondb-expo-plugin-sdk-52-plus 🍉
 
-Config plugin to auto configure `@nozbe/watermelondb` for Expo SDK 52 and above.
+Config plugin to auto configure `@nozbe/watermelondb` for Expo SDK 52 / 53!.
 
 ## Install
 
