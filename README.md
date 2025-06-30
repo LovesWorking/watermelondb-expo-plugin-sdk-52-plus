@@ -73,6 +73,29 @@ This will add:
 "EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64"
 ```
 
+## Make sure you have simdjson listed in your expo-build-properties
+```ts
+ [
+        'expo-build-properties',
+        {
+          ios: {
+            extraPods: [
+              {
+                name: 'simdjson',
+                configurations: ['Debug', 'Release'],
+                path: '../node_modules/@nozbe/simdjson',
+                modular_headers: true,
+              },
+            ],
+          },
+          android: {
+            packagingOptions: {
+              pickFirst: ['**/libc++_shared.so'],
+            },
+          },
+        },
+      ],
+```
 ## About
 
 This is a fork of the original [@morrowdigital/watermelondb-expo-plugin](https://github.com/morrowdigital/watermelondb-expo-plugin) updated and maintained for Expo SDK 52 and above. Special thanks to [@Duell10111](https://github.com/Duell10111) for creating the fix for sdk 52!
