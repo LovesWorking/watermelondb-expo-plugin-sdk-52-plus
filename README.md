@@ -98,7 +98,7 @@ This will add:
 ```
 ## About
 
-This is a fork of the original [@morrowdigital/watermelondb-expo-plugin](https://github.com/morrowdigital/watermelondb-expo-plugin) updated and maintained for Expo SDK 52 and above. Special thanks to [@Duell10111](https://github.com/Duell10111) for creating the fix for sdk 52!
+This is a fork of the original [@morrowdigital/watermelondb-expo-plugin](https://github.com/morrowdigital/watermelondb-expo-plugin) updated and maintained for Expo SDK 52 and above. Special thanks to [@Duell10111](https://github.com/Duell10111) for creating the fix for sdk (52/53+)
 
 See [MAINTAINERS.md](./MAINTAINERS.md) for information about making contributions and releasing new versions.
 
@@ -111,4 +111,4 @@ See [MAINTAINERS.md](./MAINTAINERS.md) for information about making contribution
 Enjoyed this project? Learn to use React Native to build production-ready, native mobile apps for both iOS and Android based on your existing web development skills.
 
 <img width="1800" height="520" alt="banner" src="https://github.com/user-attachments/assets/cdf63dea-464f-44fe-bed1-a517785bfd99" />
-## Contributing
+ 
