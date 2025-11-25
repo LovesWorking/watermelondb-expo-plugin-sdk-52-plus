@@ -92,32 +92,69 @@ function buildGradle(config: ExpoConfig): ExpoConfig {
 // https://github.com/morrowdigital/watermelondb-expo-plugin/pull/51/files#diff-ac4d678cfe00980f9ba9c66167516e4ab4139b78c94ff9c5083553ae8ad1f79e
 function mainApplicationSDK52(config: ExpoConfig): ExpoConfig {
   return withMainApplication(config, (mod) => {
+    console.log("[WatermelonDB] Configuring MainApplication for SDK 52+");
+    
+    // Add import if not present
     if (
       !mod.modResults.contents.includes(
         "import com.nozbe.watermelondb.jsi.WatermelonDBJSIPackage"
       )
     ) {
-      mod.modResults["contents"] = mod.modResults.contents.replace(
+      console.log("[WatermelonDB] Adding WatermelonDBJSIPackage import");
+      mod.modResults.contents = mod.modResults.contents.replace(
         "import android.app.Application",
-        `
-import android.app.Application
+        `import android.app.Application
 import com.nozbe.watermelondb.jsi.WatermelonDBJSIPackage;        
 `
       );
+    } else {
+      console.log("[WatermelonDB] WatermelonDBJSIPackage import already exists");
     }
 
+    // Add package registration if not present
     if (
       !mod.modResults.contents.includes(
-        "packages.add(WatermelonDBJSIPackage())"
+        "add(WatermelonDBJSIPackage())"
       )
     ) {
-      const newContents2 = mod.modResults.contents.replace(
-        "return packages",
-        `
-            packages.add(WatermelonDBJSIPackage())
+      console.log("[WatermelonDB] Adding WatermelonDBJSIPackage() to packages");
+      
+      let patternMatched = false;
+      
+      // Pattern 1: Kotlin with .apply {} block (SDK 52+)
+      // Matches: PackageList(this).packages.apply {
+      //            // comment
+      //            // add(MyReactNativePackage())
+      //          }
+      if (mod.modResults.contents.includes("PackageList(this).packages.apply")) {
+        console.log("[WatermelonDB] Detected Kotlin .apply pattern");
+        // Insert after the example comment line
+        mod.modResults.contents = mod.modResults.contents.replace(
+          /(\/\/ add\(MyReactNativePackage\(\)\))/,
+          `$1
+              add(WatermelonDBJSIPackage())`
+        );
+        patternMatched = true;
+      }
+      // Pattern 2: Old Java pattern (fallback for older SDKs)
+      else if (mod.modResults.contents.includes("return packages")) {
+        console.log("[WatermelonDB] Detected Java return packages pattern");
+        mod.modResults.contents = mod.modResults.contents.replace(
+          "return packages",
+          `packages.add(WatermelonDBJSIPackage())
         return packages`
-      );
-      mod.modResults.contents = newContents2;
+        );
+        patternMatched = true;
+      }
+      
+      if (patternMatched) {
+        console.log("[WatermelonDB] Successfully added WatermelonDBJSIPackage()");
+      } else {
+        console.warn("[WatermelonDB] ⚠️  Could not find suitable pattern to inject WatermelonDBJSIPackage()");
+        console.warn("[WatermelonDB] Please manually add: add(WatermelonDBJSIPackage()) to your MainApplication file");
+      }
+    } else {
+      console.log("[WatermelonDB] WatermelonDBJSIPackage() already registered");
     }
 
     return mod;
